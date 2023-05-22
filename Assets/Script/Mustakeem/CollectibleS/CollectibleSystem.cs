@@ -2,20 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum CollectibleType
-{
-    Coins,
-    Gems,
-    AirCylinder,
-    Antidote,
-    Health
-}
 
-public abstract class CollectibleSystemBase : MonoBehaviour
-{
-    protected Dictionary<CollectibleType, int> collectibleCounts;
-    public abstract void UpdateCollectibles(CollectibleType type);
-}
+
+
 
 public class CollectibleSystem : CollectibleSystemBase
 {

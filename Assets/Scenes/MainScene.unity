@@ -4415,6 +4415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shark Swimming Animation
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e87315db56ed46c46bfd39c5910ba3a9, type: 3}
+      propertyPath: m_TagString
+      value: Shark
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87315db56ed46c46bfd39c5910ba3a9, type: 3}
 --- !u!1 &827805706
