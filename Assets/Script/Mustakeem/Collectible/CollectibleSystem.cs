@@ -1,23 +1,20 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
-
-
 
 
 public class CollectibleSystem : CollectibleSystemBase
 {
-    public List<GameObject> collectibles;
-    public Text coinText;
-    public Text gemText;
-    public Text AirCylinderText;
-    public Text healthText;
-    public Text AntidoteText;
-    public static bool cylinder;
+    [SerializeField] private List<GameObject> collectibles;
+     [SerializeField] private TextMeshProUGUI coinText;
+     [SerializeField] private TextMeshProUGUI gemText;
+     [SerializeField] private TextMeshProUGUI AirCylinderText;
+     [SerializeField] private TextMeshProUGUI healthText;
+     [SerializeField] private TextMeshProUGUI AntidoteText;
+     [SerializeField] public static bool cylinder;
 
     private PlayerMovement timerController;
-    public healthManage health;
+     [SerializeField] private HealthManage health;
 
 
     private void Start()
@@ -39,36 +36,27 @@ public class CollectibleSystem : CollectibleSystemBase
         {
             case CollectibleType.Coins:
                 coinText.text = "Coins: " + collectibleCounts[type];
-                Debug.Log("coin");
                 break;
             case CollectibleType.Gems:
-                gemText.text = "Gems: " + collectibleCounts[type];
-                Debug.Log("Gems");
+                gemText.text = "Gems: " + collectibleCounts[type];;
                 break;
             case CollectibleType.AirCylinder:
                 AirCylinderText.text = "AirCylinder: " + collectibleCounts[type];
                 timerController.FillSlider();
-                Debug.Log("AirCylinder");
-
                 break;
             case CollectibleType.Health:
-              //  healthText.text = "Health: " + collectibleCounts[type];
                 health.GainSmallHealth();
-                Debug.Log("Health");
                 break;
             case CollectibleType.Antidote:
                 AntidoteText.text = "Antidotes: " + collectibleCounts[type];
-                Debug.Log("Antidotes");
                 break;
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered : " + other.gameObject.name);
         if (collectibles.Contains(other.gameObject))
         {
-            Debug.Log("Triggered by: " + other.gameObject.name);
             CollectibleType type = other.gameObject.GetComponent<Collectible>().type;
             if (collectibleCounts.ContainsKey(type))
             {

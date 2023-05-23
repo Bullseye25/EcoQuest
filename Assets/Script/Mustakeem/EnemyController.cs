@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     [System.Serializable]
-    public class WaypointData
+
+    public struct WaypointData
     {
         public Transform waypoint;
-        public float rotationAngle = 0f;
+        public float rotationAngle;
         public AnimationClip animation;
     }
 

@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Menue : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider;
-    public Rigidbody rb;
+    [SerializeField] private Rigidbody rb;
     private RigidbodyConstraints originalConstraints;
-    public MonoBehaviour PlayerMovement;
-    public GameObject pausePanel;
+    [SerializeField] private MonoBehaviour PlayerMovement;
+    [SerializeField] private GameObject pausePanel;
 
    
 
@@ -24,17 +24,10 @@ public class Menue : MonoBehaviour
         {
             Load();
         }
-
-
-       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
+   
+   
     public void Pause()
     {
         pausePanel.SetActive(true);

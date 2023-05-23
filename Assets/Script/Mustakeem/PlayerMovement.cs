@@ -1,44 +1,35 @@
-using System.Timers;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float moveSpeed;
-    public float jumpHeight;
-    public float underwaterFriction;
-    public float gravityMultiplier;
-    public float gravityMultiplierUnderWater;
-    public float waterGravityMultiplier;
-    public Joystick joystick;
-
-    public bool isUnderwater = false;
-    public bool isGrounded = false;
-    public bool isOnUnderwaterGround = false;
-    public Rigidbody rb;
-    public ParticleSystem particles;
-
-    public bool isJumping = false;
-    public float jumpVelocity;
-
-
-    public healthManage health;
-
-
-
-    public Text timerText;
-    public Slider timerSlider;
-    public float gameTime = 120f;
-
+     [SerializeField]    private float moveSpeed;
+     [SerializeField]    private float jumpHeight;
+     [SerializeField]    private float underwaterFriction;
+     [SerializeField]    private float gravityMultiplier;
+     [SerializeField]    private float gravityMultiplierUnderWater;
+     [SerializeField]    private float waterGravityMultiplier;
+     [SerializeField]    private Joystick joystick;
+     [SerializeField]    private bool isUnderwater = false;
+     [SerializeField]    private bool isGrounded = false;
+     [SerializeField]    private bool isOnUnderwaterGround = false;
+     [SerializeField]    private Rigidbody rb;
+     [SerializeField]    private ParticleSystem particles;
+     [SerializeField]    private bool isJumping = false;
+     [SerializeField]    private float jumpVelocity;
+     [SerializeField]    private HealthManage health;
+     [SerializeField]    private TextMeshProUGUI timerText;
+     [SerializeField]    private Slider timerSlider;
+     [SerializeField]    private float gameTime = 120f;
     private Timer timer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-        /*        CalculateJumpVelocity();*/
-
         timer = new Timer(gameTime);
         timerSlider.maxValue = gameTime;
         timerSlider.value = gameTime;
@@ -46,7 +37,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float horizontalInput = joystick.Horizontal;
+        // joystick input
+        float horizontalInput = -joystick.Horizontal;
+        MovePlayer(horizontalInput);
+         // Keyboard input
+        float keyboardInput = -Input.GetAxis("Horizontal");
+        MovePlayer(keyboardInput);
         transform.Translate(horizontalInput * moveSpeed * Time.deltaTime, 0, 0);
 
         if (isUnderwater && !isOnUnderwaterGround)
@@ -63,14 +59,9 @@ public class PlayerMovement : MonoBehaviour
         {
             CalculateJumpVelocity();
             isJumping = true;
-            /*if (isUnderwater || isOnUnderwaterGround)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, jumpVelocity / 2f, rb.velocity.z);
-            }
-            else
-            {*/
+            
             rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
-            /*}*/
+
         }
 
         // Additional code for swimming up
@@ -115,13 +106,17 @@ public class PlayerMovement : MonoBehaviour
             UpdateTimerUI();
         }
     }
+     private void MovePlayer(float input)
+    {
+        transform.Translate(input * moveSpeed * Time.deltaTime, 0, 0);
+    }
     private void UpdateTimerUI()
     {
         int minutes = Mathf.FloorToInt(timer.GetValue() / 60f);
         int seconds = Mathf.FloorToInt(timer.GetValue() % 60f);
 
         string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
-        Debug.Log(textTime);
+        
 
         timerText.text = textTime;
         timerSlider.value = timer.GetValue();
@@ -133,14 +128,8 @@ public class PlayerMovement : MonoBehaviour
         {
             CalculateJumpVelocity();
             isJumping = true;
-            /*if (isUnderwater || isOnUnderwaterGround)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, jumpVelocity / 2f, rb.velocity.z);
-            }
-            else
-            {*/
+         
             rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
-            /*}*/
         }
 
         // Additional code for swimming up
@@ -153,51 +142,44 @@ public class PlayerMovement : MonoBehaviour
 
 
     void OnCollisionEnter(Collision collision)
+{
+    switch (collision.gameObject.tag)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
+        case "Ground":
             isGrounded = true;
             isJumping = false;
             rb.velocity = Vector3.zero; // set velocity to zero
-        }
-        else if (collision.gameObject.CompareTag("UnderWaterGround"))
-        {
+            break;
+        case "UnderWaterGround":
             isOnUnderwaterGround = true;
             isGrounded = true;
             isJumping = false;
-        }
-
-
-
-        // Damage
-        if (collision.gameObject.CompareTag("Shark"))
-        {
+            break;
+        case "Shark":
             health.BigDamage();
             particles.Play();
             moveSpeed = 0;
             jumpHeight = 0;
-            Invoke("StopParticles", 1f);
-        }
-        else if (collision.gameObject.CompareTag("Crab"))
-        {
+            StartCoroutine(StopParticles());
+            break;
+        case "Crab":
             health.SmallDamage();
             particles.Play();
             moveSpeed = 0;
             jumpHeight = 0;
-            Invoke("StopParticles", 1f);
-        }
-        else if (collision.gameObject.CompareTag("SeaHorse"))
-        {
+           StartCoroutine(StopParticles());;
+            break;
+        case "SeaHorse":
             health.BigDamage();
             particles.Play();
             moveSpeed = 0;
             jumpHeight = 0;
-            Invoke("StopParticles", 1f);
-        }
-
-
-
+            StartCoroutine(StopParticles());
+            break;
+        default:
+            break;
     }
+}
 
     void OnCollisionExit(Collision collision)
     {
@@ -252,17 +234,21 @@ public class PlayerMovement : MonoBehaviour
         float g = Physics.gravity.magnitude * gravityMultiplier;
         jumpVelocity = Mathf.Sqrt(2 * g * (isUnderwater == true ? jumpHeight : jumpHeight / 2));
     }
-
-    void StopParticles()
-    {
-        particles.Stop();
-        moveSpeed = 5;
-        jumpHeight = 5;
-    }
-
     public void FillSlider()
     {
         timer.Reset(gameTime);
         UpdateTimerUI();
+    }
+
+   IEnumerator StopParticles()
+    {
+        // Coroutine logic
+        
+
+        yield return new WaitForSeconds(1f);
+
+         particles.Stop();
+        moveSpeed = 5;
+        jumpHeight = 5;
     }
 }

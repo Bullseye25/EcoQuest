@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
-public class healthManage : MonoBehaviour
+public class HealthManage : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private float maxHealth = 100f;
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
     public GameObject player;
 
     private void Start()

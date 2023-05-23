@@ -22,7 +22,7 @@ public class CubeController : MonoBehaviour
     public float jumpVelocity;
 
 
-    public healthManage health;
+    public HealthManage health;
 
 
    
