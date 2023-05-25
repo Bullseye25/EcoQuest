@@ -25,10 +25,13 @@ public class CollectibleSystem : CollectibleSystemBase
         {
             collectibleCounts[type] = 0;
         }
-
+        
         timerController = GetComponent<PlayerMovement>();
 
     }
+    // private void Update() {
+        
+    // }
 
     public override void UpdateCollectibles(CollectibleType type)
     {
@@ -49,8 +52,13 @@ public class CollectibleSystem : CollectibleSystemBase
                 break;
             case CollectibleType.Antidote:
                 AntidoteText.text = "Antidotes: " + collectibleCounts[type];
+                
                 break;
         }
+    }
+    public int AntidoteCount
+    {
+        get { return collectibleCounts[CollectibleType.Antidote]; }
     }
 
     public void OnTriggerEnter(Collider other)

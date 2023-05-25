@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Shark
+  - Crab
+  - Ground
+  - SeaHorse
+  - UnderWaterGround
+  - Water
+  - Target
   layers:
   - Default
   - TransparentFX
