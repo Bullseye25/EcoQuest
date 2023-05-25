@@ -1,6 +1,4 @@
-using System.Timers;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CubeController : MonoBehaviour
 {
@@ -10,37 +8,20 @@ public class CubeController : MonoBehaviour
     public float gravityMultiplier;
     public float gravityMultiplierUnderWater;
     public float waterGravityMultiplier;
-    public Joystick joystick;
 
     public bool isUnderwater = false;
     public bool isGrounded = false;
     public bool isOnUnderwaterGround = false;
     public Rigidbody rb;
-    public ParticleSystem particles;
 
     public bool isJumping = false;
     public float jumpVelocity;
-
-
-    public HealthManage health;
-
-
-   
-    public Text timerText;
-    public Slider timerSlider;
-    public float gameTime = 120f;
-
-    private Timer timer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-        /*        CalculateJumpVelocity();*/
-
-        timer = new Timer(gameTime);
-        timerSlider.maxValue = gameTime;
-        timerSlider.value = gameTime;
+/*        CalculateJumpVelocity();*/
     }
 
     void Update()
@@ -78,43 +59,6 @@ public class CubeController : MonoBehaviour
             CalculateJumpVelocity();
             rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
         }
-
-       
-    }
-    private void UpdateTimerUI()
-    {
-        int minutes = Mathf.FloorToInt(timer.GetValue() / 60f);
-        int seconds = Mathf.FloorToInt(timer.GetValue() % 60f);
-
-        string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
-        Debug.Log(textTime);
-
-        timerText.text = textTime;
-        timerSlider.value = timer.GetValue();
-    }
-
-    public void jump()
-    {
-        if ((isGrounded || isUnderwater || isOnUnderwaterGround) && !isJumping)
-        {
-            CalculateJumpVelocity();
-            isJumping = true;
-            /*if (isUnderwater || isOnUnderwaterGround)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, jumpVelocity / 2f, rb.velocity.z);
-            }
-            else
-            {*/
-            rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
-            /*}*/
-        }
-
-        // Additional code for swimming up
-        if (isUnderwater)
-        {
-            CalculateJumpVelocity();
-            rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
-        }
     }
 
 
@@ -132,13 +76,6 @@ public class CubeController : MonoBehaviour
             isGrounded = true;
             isJumping = false;
         }
-
-
-
-      
-
-
-
     }
 
     void OnCollisionExit(Collision collision)
@@ -194,8 +131,4 @@ public class CubeController : MonoBehaviour
         float g = Physics.gravity.magnitude * gravityMultiplier;
         jumpVelocity = Mathf.Sqrt(2 * g * (isUnderwater == true ? jumpHeight : jumpHeight / 2));
     }
-
-    
-
-
 }
