@@ -9,7 +9,7 @@ public class CollectibleSystem : CollectibleSystemBase
      [SerializeField] private TextMeshProUGUI coinText;
      [SerializeField] private TextMeshProUGUI gemText;
      [SerializeField] private TextMeshProUGUI AirCylinderText;
-     [SerializeField] private TextMeshProUGUI healthText;
+     [SerializeField] private TextMeshProUGUI SmallFish;
      [SerializeField] private TextMeshProUGUI AntidoteText;
      [SerializeField] public static bool cylinder;
 
@@ -51,9 +51,9 @@ public class CollectibleSystem : CollectibleSystemBase
                 health.GainSmallHealth();
                 break;
             case CollectibleType.Antidote:
-                AntidoteText.text = "Antidotes: " + collectibleCounts[type];
-                
+                AntidoteText.text = "Antidotes: " + collectibleCounts[type];    
                 break;
+            
         }
     }
     public int AntidoteCount

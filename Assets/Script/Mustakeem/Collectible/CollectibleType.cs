@@ -8,5 +8,6 @@ public enum CollectibleType
     Gems,
     AirCylinder,
     Antidote,
-    Health
+    Health,
+    SmallFish
 }

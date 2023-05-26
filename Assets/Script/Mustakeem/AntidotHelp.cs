@@ -1,26 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using TMPro;
 using UnityEngine;
 
 public class AntidotHelp : MonoBehaviour
 {
-    // Start is called before the first frame update
-   
-     private void OnCollisionEnter(Collision other)
     
-    {
-     //   Debug.Log(other.gameObject);
-        if (other.gameObject.CompareTag("Target") )
-        {
-            // Destroy the antidot prefab
-            Destroy(gameObject);
+   
+    [SerializeField] private TextMeshProUGUI scoreText; // Reference to the TextMeshProUGUI component to display the score
+    public static int score = 0; // Variable to store the current score
 
-            // Enable the Movement script on the collided target object
-            EnemyController movementScript = other.gameObject.GetComponent<EnemyController>();
-            if (movementScript != null)
-            {
-                movementScript.enabled = true;
-            }
+    private void OnCollisionEnter(Collision other)
+{
+    if (other.gameObject.CompareTag("Target"))
+    {
+        Destroy(gameObject);
+        
+        EnemyController movementScript = other.gameObject.GetComponent<EnemyController>();
+        if (movementScript != null)
+        {
+            movementScript.enabled = true;
         }
+        
+        // Add score and update the text
+        score++;
+        
+        
     }
+}
+
+//    private void UpdateScoreText()
+//     {
+    
+//         Debug.Log("qwre");
+           
+        
+//     }
 }

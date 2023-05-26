@@ -46,15 +46,8 @@ public class AntidotController : MonoBehaviour
 
             // Find the nearest target object
             currentTarget = GetNearestObject();
+            Destroy(currentAntidot, 2f);
             
-            // if (currentTarget != null)
-            // {
-            //     Debug.Log("Moving antidot towards target.");
-            // }
-            // else
-            // {
-            //     Debug.LogWarning("No target object found.");
-            // }
         }
         
     }
@@ -62,7 +55,7 @@ public class AntidotController : MonoBehaviour
     private GameObject GetNearestObject()
     {
         GameObject nearestObject = null;
-        float minDistance = 5f; // Initialize to a large value
+        float minDistance = 7f; // Initialize to a large value
 
         foreach (GameObject target in targetObjects)
         {
