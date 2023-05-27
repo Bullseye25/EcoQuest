@@ -5,20 +5,24 @@ using UnityEngine.Events;
 
 public class ControllerCore : MonoBehaviour
 {
+    [SerializeField] protected CharacterController characterController;
+    
+    [Space]
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float jumpHeight;
-    [SerializeField] protected float underwaterFriction;
     [SerializeField] protected float gravityMultiplier;
+    [SerializeField] protected LayerMask ignoredLayers; // Array of layers to be ignored by CharacterController
+
+    [Space]
+    [Header("Water Settings")]
+    [SerializeField] protected float underwaterFriction;
     [SerializeField] protected float gravityMultiplierUnderWater;
     [SerializeField] protected float waterGravityMultiplier;
 
+    [Space]
     [SerializeField] protected bool isUnderwater = false;
     [SerializeField] protected bool isGrounded = false;
     [SerializeField] protected bool isOnUnderwaterGround = false;
-
-    [SerializeField] protected LayerMask ignoredLayers; // Array of layers to be ignored by CharacterController
-
-    [SerializeField] protected CharacterController characterController;
 
     [Space]
     [SerializeField] protected UnityEvent onJump = new UnityEvent();
@@ -107,7 +111,7 @@ public class ControllerCore : MonoBehaviour
 
     protected virtual void CalculateJumpVelocity()
     {
-        float g = Physics.gravity.magnitude * gravityMultiplier;
+        float g = Physics.gravity.magnitude * (isUnderwater ? gravityMultiplierUnderWater : gravityMultiplier);
         jumpVelocity = Mathf.Sqrt(2 * g * (isUnderwater ? jumpHeight : jumpHeight / 2));
     }
 
@@ -144,6 +148,7 @@ public class ControllerCore : MonoBehaviour
     protected virtual void HandleWaterEnter()
     {
         isUnderwater = true;
+        CalculateJumpVelocity();
     }
 
     protected virtual void HandleUnderwaterGroundEnter()
@@ -158,6 +163,7 @@ public class ControllerCore : MonoBehaviour
         isUnderwater = false;
         isGrounded = false;
         isOnUnderwaterGround = false;
+        CalculateJumpVelocity();
     }
 
     protected virtual void HandleUnderwaterGroundExit()

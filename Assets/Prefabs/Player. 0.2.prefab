@@ -99,24 +99,24 @@ MonoBehaviour:
   moveSpeed: 5
   jumpHeight: 5
   underwaterFriction: 0.5
-  gravityMultiplier: 0.85
-  gravityMultiplierUnderWater: 2.5
-  waterGravityMultiplier: 0.2
-  isUnderwater: 0
+  gravityMultiplier: 2
+  gravityMultiplierUnderWater: 1.5
+  waterGravityMultiplier: 0.25
+  isUnderwater: 1
   isGrounded: 1
-  isOnUnderwaterGround: 0
+  isOnUnderwaterGround: 1
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 16
   characterController: {fileID: 71522215072740784}
-  isJumping: 0
-  jumpVelocity: 0
-  horizontalInput: 0
-  gravity: 0
-  deltaTime: 0
   onJump:
     m_PersistentCalls:
       m_Calls: []
+  isJumping: 0
+  jumpVelocity: 12.13054
+  horizontalInput: -0
+  gravity: -0.5674968
+  deltaTime: 0.0578488
 --- !u!1 &2677327447133564382
 GameObject:
   m_ObjectHideFlags: 0
