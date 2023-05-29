@@ -2,7 +2,100 @@ fileFormatVersion: 2
 guid: d0eeb911a70928240ac250fc7bbfffbf
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 5869885093613186240
+    second: rig|rig.001|rig|rig.001|rig|rig.001|rig|rigAction.001
+  - first:
+      74: 2184827137111303695
+    second: rig|rig.001|rig|rig.001|rig|rig.001|rig|rigAction.002
+  - first:
+      74: 4325389470610389682
+    second: rig|rig.001|rig|rig.001|rig|rig.001|rig|rigAction.003
+  - first:
+      74: -1264427429639152989
+    second: rig|rig.001|rig|rig.001|rig|rig.001|rig|rigAction.004
+  - first:
+      74: -5833013273735444257
+    second: rig|rig.001|rig|rig.001|rig|rigAction
+  - first:
+      74: 1184270342694929725
+    second: rig|rig.001|rig|rig.001|rig|rigAction.001
+  - first:
+      74: -3082544224341800562
+    second: rig|rig.001|rig|rig.001|rig|rigAction.002
+  - first:
+      74: -1372747308217980192
+    second: rig|rig.001|rig|rig.001|rig|rigAction.003
+  - first:
+      74: 8666822983660742616
+    second: rig|rig.001|rig|rig.001|rig|rigAction.004
+  - first:
+      74: 7170929612334863351
+    second: rig|rig.001|rig|rig.001|rig|rigAction.005
+  - first:
+      74: 7685678885207768194
+    second: rig|rig.001|rig|rig.001|rig|rigAction.006
+  - first:
+      74: 8073595213255155797
+    second: rig|rig.001|rig|rig.001|rig|rigAction.007
+  - first:
+      74: 1094569963733434142
+    second: rig|rig.001|rig|rig.001|rig|rigAction.008
+  - first:
+      74: 7749422571927436841
+    second: rig|rig.001|rig|rig.001|rig|rigAction.009
+  - first:
+      74: -1871459785656610820
+    second: rig|rig.001|rig|rig.001|rig|rigAction.010
+  - first:
+      74: 5603177975933947086
+    second: rig|rig.001|rig|rig.001|rig|Smooth Shark.001Action
+  - first:
+      74: 6839338695067927526
+    second: rig|rig.001|rig|rig.001|rig|Smooth Shark.001Action.001
+  - first:
+      74: -7805345449271013683
+    second: rig|rig.001|rig|rig.001|rig|Smooth Shark.001Action.002
+  - first:
+      74: 1758093727192544200
+    second: rig|rig.001|rig|rigAction
+  - first:
+      74: 4675064647346894926
+    second: rig|rig.001|rig|rigAction.001
+  - first:
+      74: 775585478877418572
+    second: rig|rig.001|rig|rigAction.002
+  - first:
+      74: 1141747650906062653
+    second: rig|rig.001|rig|rigAction.003
+  - first:
+      74: -7313050457071430863
+    second: rig|rig.001|rig|rigAction.004
+  - first:
+      74: -272106939816954035
+    second: rig|rig.001|rig|rigAction.005
+  - first:
+      74: -1977489587060366260
+    second: rig|rig.001|rig|rigAction.006
+  - first:
+      74: 3569707728587513237
+    second: rig|rig.001|rig|Smooth Shark.001Action
+  - first:
+      74: 9134921014749112809
+    second: rig|rig.001|rig|Smooth Shark.001Action.001
+  - first:
+      74: -4981007287873271820
+    second: rig|rig.001|rig|Smooth Shark.001Action.002
+  - first:
+      74: -1781703058898704090
+    second: rig|rig.001|rig|Smooth Shark.001Action.003
+  - first:
+      74: 3374748389425109202
+    second: rig|rigAction
+  - first:
+      74: -4722442723757205037
+    second: rig|Smooth Shark.001Action
   externalObjects: {}
   materials:
     materialImportMode: 2

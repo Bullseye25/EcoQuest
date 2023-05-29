@@ -2,7 +2,25 @@ fileFormatVersion: 2
 guid: 3d6dfea0cb6c71a4eb5fb4b0189c75f4
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 8075391131675942697
+    second: Armature.001|Armature.001|Armature.001|ArmatureAction
+  - first:
+      74: -6032481017138890803
+    second: Armature.001|Armature.001|Armature.001|ArmatureAction.001
+  - first:
+      74: -960898424075949690
+    second: Armature.001|ArmatureAction
+  - first:
+      74: -2231807096525233462
+    second: Armature.001|Hawksbill.meshAction
+  - first:
+      74: -5137208102209475593
+    second: Armature.001|Smooth Shark.001Action
+  - first:
+      74: 347498242503148577
+    second: Armature.001|Smooth Shark.001Action.001
   externalObjects: {}
   materials:
     materialImportMode: 2

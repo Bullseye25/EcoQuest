@@ -2,7 +2,16 @@ fileFormatVersion: 2
 guid: 621e9410ef2ecd24aa1de1d91fe169f0
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1758093727192544200
+    second: rig|rig.001|rig|rigAction
+  - first:
+      74: 3374748389425109202
+    second: rig|rigAction
+  - first:
+      74: -4722442723757205037
+    second: rig|Smooth Shark.001Action
   externalObjects: {}
   materials:
     materialImportMode: 2

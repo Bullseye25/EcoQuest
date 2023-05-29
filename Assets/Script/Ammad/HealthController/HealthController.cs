@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private RectTransform rect;
-    [SerializeField] private float currentHealth;
+    private const float MAX = 100f;
 
-    public void UpdateHealth(float healthChange)
+    [SerializeField] private RectTransform rect;
+    
+    [Space]
+    [SerializeField] private float bigGain, smallGain, bigDamage, smallDamange;
+
+    private float currentHealth;
+
+    private void Start()
     {
-        float transformedChange = healthChange * (100.0f / 205.0f); // map from -102.5 to 102.5 to 0 to 100
+        currentHealth = MAX;
+    }
+
+    private void UpdateHealth(float healthChange)
+    {
+        float transformedChange = healthChange * (MAX / 398.6306f); // map from -102.5 to 102.5 to 0 to 100
         currentHealth += transformedChange;
 
         // keep health within bounds of 0 to 100
-        if (currentHealth > 100.0f)
+        if (currentHealth > MAX)
         {
-            rect.anchoredPosition = new Vector2(102.5f, rect.anchoredPosition.y);
-            currentHealth = 100.0f;
+            rect.anchoredPosition = new Vector2(0f, rect.anchoredPosition.y);
+            currentHealth = MAX;
         }
         else if (currentHealth < 0.0f)
         {
-            rect.anchoredPosition = new Vector2(-102.5f, rect.anchoredPosition.y);
+            rect.anchoredPosition = new Vector2(398.6306f, rect.anchoredPosition.y);
             currentHealth = 0.0f;
         }
         else
@@ -32,31 +43,31 @@ public class HealthController : MonoBehaviour
     [ContextMenu("ResetHealth")]
     public virtual void ResetHealth()
     {
-        UpdateHealth(100);
+        UpdateHealth(MAX);
     }
 
     [ContextMenu("GainBigHealth")]
     public virtual void GainBigHealth()
     {
-        UpdateHealth(45);
+        UpdateHealth(bigGain);
     }
 
     [ContextMenu("GainSamllHealth")]
     public virtual void GainSamllHealth()
     {
-        UpdateHealth(25);
+        UpdateHealth(smallGain);
     }
 
     [ContextMenu("BigDamage")]
     public virtual void BigDamage()
     {
-        UpdateHealth(-35);
+        UpdateHealth(-bigDamage);
     }
 
     [ContextMenu("SmallDamage")]
     public virtual void SmallDamage()
     {
-        UpdateHealth(-15);
+        UpdateHealth(-smallDamange);
     }
 
     public float GetCurrentHealth()

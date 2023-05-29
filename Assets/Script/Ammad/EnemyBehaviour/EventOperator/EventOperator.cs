@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TargetSeeker : MonoBehaviour
+public class EventOperator : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private UnityEvent onEnter = new UnityEvent();
