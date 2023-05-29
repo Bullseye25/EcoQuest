@@ -15,12 +15,15 @@ public class CollectibleSystem : CollectibleSystemBase
 
     private PlayerMovement timerController;
      [SerializeField] private HealthManage health;
+     private Levels levels;
 
 
     private void Start()
     {
         // Initialize the dictionary of collectible counts with all types set to 0
         collectibleCounts = new Dictionary<CollectibleType, int>();
+        levels = FindObjectOfType<Levels>();
+         
         foreach (CollectibleType type in System.Enum.GetValues(typeof(CollectibleType)))
         {
             collectibleCounts[type] = 0;
@@ -29,10 +32,20 @@ public class CollectibleSystem : CollectibleSystemBase
         timerController = GetComponent<PlayerMovement>();
 
     }
+
+     private void Update() 
+    {
+        SmallFish.text = "Fish : " + AntidotHelp.score.ToString();
+        if(AntidotHelp.score == 5){
+            levels.NextStage();
+            AntidotHelp.score +=10;
+        }
+    }
     // private void Update() {
         
     // }
 
+   
     public override void UpdateCollectibles(CollectibleType type)
     {
         switch (type)

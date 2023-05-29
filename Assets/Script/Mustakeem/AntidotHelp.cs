@@ -6,10 +6,9 @@ public class AntidotHelp : MonoBehaviour
 {
     
    
-    [SerializeField] private TextMeshProUGUI scoreText; // Reference to the TextMeshProUGUI component to display the score
-    public static int score = 0; // Variable to store the current score
+    public static int score = 0;
 
-    private void OnCollisionEnter(Collision other)
+    public void OnCollisionEnter(Collision other)
 {
     if (other.gameObject.CompareTag("Target"))
     {
@@ -22,7 +21,7 @@ public class AntidotHelp : MonoBehaviour
         }
         
         // Add score and update the text
-        score++;
+       score++;
         
         
     }
