@@ -12,6 +12,9 @@ public class CollectibleSystem : CollectibleSystemBase
      [SerializeField] private TextMeshProUGUI SmallFish;
      [SerializeField] private TextMeshProUGUI AntidoteText;
      [SerializeField] public static bool cylinder;
+     [SerializeField] public GameObject complete;
+     private float activationTime = 2f;
+    private bool hasActivated = false;
 
     private PlayerMovement timerController;
      [SerializeField] private HealthManage health;
@@ -33,13 +36,22 @@ public class CollectibleSystem : CollectibleSystemBase
 
     }
 
-     private void Update() 
+     private void Update()
     {
-        SmallFish.text = "Fish : " + AntidotHelp.score.ToString();
-        if(AntidotHelp.score == 5){
-            levels.NextStage();
-            AntidotHelp.score +=10;
+        SmallFish.text = "Fish: " + AntidotHelp.score.ToString();
+
+        if ((AntidotHelp.score == 5 || AntidotHelp.score == 12) && !hasActivated)
+        {
+            complete.SetActive(true);
+            hasActivated = true;
+            Invoke("DeactivateComplete", activationTime);
+            levels.complete();
         }
+    }
+
+    private void DeactivateComplete()
+    {
+        complete.SetActive(false);
     }
     // private void Update() {
         
