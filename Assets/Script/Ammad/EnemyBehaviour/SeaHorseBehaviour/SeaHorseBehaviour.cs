@@ -38,34 +38,24 @@ public class SeaHorseBehaviour : MonoBehaviour
         // If the sea horse reaches the target position, update the new target position and rotation
         if (transform.position == targetPosition)
         {
-            UpdateTargetPosition();
+            RoamAround();
         }
     }
 
-    private void UpdateTargetPosition()
+    private void RoamAround()
     {
         float x = 0f;
-        float y = 0f;
+        float y = Random.Range(startingYAxis - yAxisRadius, startingYAxis + yAxisRadius);
 
         var currentX = transform.position.x;
-        var currentY = transform.position.y;
 
-        if(currentX >= startingXAxis + xAxisRadius)
+        if (currentX >= startingXAxis + xAxisRadius)
         {
             x = startingXAxis - xAxisRadius;
         }
         else if(currentX <= startingXAxis - xAxisRadius)
         {
             x = startingXAxis + xAxisRadius;
-        }
-
-        if (currentY >= startingYAxis + yAxisRadius)
-        {
-            y = startingYAxis - yAxisRadius;
-        }
-        else if (currentY <= startingYAxis - yAxisRadius)
-        {
-            y = startingYAxis + yAxisRadius;
         }
 
         // Generate a random target position within the specified range

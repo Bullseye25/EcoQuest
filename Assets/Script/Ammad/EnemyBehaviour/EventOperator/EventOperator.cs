@@ -9,6 +9,8 @@ public class EventOperator : MonoBehaviour
     [SerializeField] private UnityEvent onEnter = new UnityEvent();
     [SerializeField] private UnityEvent onExit = new UnityEvent();
 
+    private void Start() { }
+
     private void OnTriggerEnter(Collider _target)
     {
         if (_target.transform == target)

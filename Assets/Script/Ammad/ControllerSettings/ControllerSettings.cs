@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ControllerSettings : ControllerCore
 {
+    [Header("Controller Settings")]
+    [SerializeField] private UnityEvent onEnterWater = new UnityEvent();
+    [SerializeField] private UnityEvent onExitWater = new UnityEvent();
+
     protected override void Start()
     {
         base.Start();
@@ -33,5 +38,19 @@ public class ControllerSettings : ControllerCore
         base.OnTriggerExit(other);
         // Add additional trigger exit logic specific to the child class
     }
-}
 
+    protected override void HandleWaterEnter()
+    {
+        base.HandleWaterEnter();
+
+        onEnterWater.Invoke();
+    }
+
+    protected override void HandleWaterExit()
+    {
+        base.HandleWaterExit();
+
+        onExitWater.Invoke();
+    }
+
+}

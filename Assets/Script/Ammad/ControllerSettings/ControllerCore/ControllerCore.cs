@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class ControllerCore : MonoBehaviour
 {
+    [Header("Controller Core")]
+
     [SerializeField] protected CharacterController characterController;
     
     [Space]
