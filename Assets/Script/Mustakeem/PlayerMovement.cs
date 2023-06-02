@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
      [SerializeField]    private float gravityMultiplierUnderWater;
      [SerializeField]    private float waterGravityMultiplier;
      [SerializeField]    private Joystick joystick;
+     [SerializeField]private float rotationSpeed = 200f;
      [SerializeField]    private bool isUnderwater = false;
      [SerializeField]    private bool isGrounded = false;
      [SerializeField]    private bool isOnUnderwaterGround = false;
@@ -37,13 +38,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // joystick input
-        float horizontalInput = -joystick.Horizontal;
-        MovePlayer(horizontalInput);
-         // Keyboard input
+       // Joystick input
+        float joystickInput = -joystick.Horizontal;
+        MovePlayer(joystickInput);
+
+        // Keyboard input
         float keyboardInput = -Input.GetAxis("Horizontal");
         MovePlayer(keyboardInput);
-        transform.Translate(horizontalInput * moveSpeed * Time.deltaTime, 0, 0);
+        
 
         if (isUnderwater && !isOnUnderwaterGround)
         {
@@ -108,7 +110,17 @@ public class PlayerMovement : MonoBehaviour
     }
      private void MovePlayer(float input)
     {
-        transform.Translate(input * moveSpeed * Time.deltaTime, 0, 0);
+       // Calculate movement direction
+        Vector3 movement = new Vector3(input, 0f, 0f);
+
+        // Move the player
+        transform.Translate(movement * moveSpeed * Time.deltaTime);
+
+        // if (movement.magnitude > 0f)
+        // {
+        //     Quaternion toRotation = Quaternion.LookRotation(movement, Vector2.up);
+        //     transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        // }
     }
     private void UpdateTimerUI()
     {

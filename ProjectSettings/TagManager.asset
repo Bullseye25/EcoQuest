@@ -11,6 +11,7 @@ TagManager:
   - UnderWaterGround
   - Water
   - Target
+  - smallFish
   layers:
   - Default
   - TransparentFX
