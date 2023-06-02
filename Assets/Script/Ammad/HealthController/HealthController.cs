@@ -20,7 +20,7 @@ public class HealthController : MonoBehaviour
 
     private void UpdateHealth(float healthChange)
     {
-        float transformedChange = healthChange * (MAX / 398.6306f); // map from -102.5 to 102.5 to 0 to 100
+        float transformedChange = healthChange * (MAX / 398.6306f);
         currentHealth += transformedChange;
 
         // keep health within bounds of 0 to 100

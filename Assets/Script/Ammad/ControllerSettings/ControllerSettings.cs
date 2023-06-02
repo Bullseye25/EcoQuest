@@ -5,7 +5,11 @@ using UnityEngine.Events;
 
 public class ControllerSettings : ControllerCore
 {
+    private const string BEHAVIOUR = "Anim";
+
     [Header("Controller Settings")]
+    [SerializeField] private Animator behaviour;
+
     [SerializeField] private UnityEvent onEnterWater = new UnityEvent();
     [SerializeField] private UnityEvent onExitWater = new UnityEvent();
 
@@ -19,6 +23,8 @@ public class ControllerSettings : ControllerCore
     {
         base.Update();
         // Add additional update code specific to the child class
+
+        JumpAnimationBehaviour();
     }
 
     protected override void OnControllerColliderHit(ControllerColliderHit hit)
@@ -53,4 +59,22 @@ public class ControllerSettings : ControllerCore
         onExitWater.Invoke();
     }
 
+    private void JumpAnimationBehaviour()
+    {
+
+    }
+
+    public void SetAnimation(BotBehaviour value)
+    {
+        behaviour.SetInteger("BEHAVIOUR", (int)value);
+    }
+
+}
+
+public enum BotBehaviour
+{
+    IDLE = 0,
+    WALK = 1,
+    JUMP_UP = 2,
+    JUMP_Down = 3
 }
