@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 316339375}
-  m_IndirectSpecularColor: {r: 0.18054643, g: 0.22602841, b: 0.30706868, a: 1}
+  m_IndirectSpecularColor: {r: 0.18054634, g: 0.22602816, b: 0.30706847, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -737,7 +737,7 @@ MeshCollider:
   m_Mesh: {fileID: 3300300423472176255, guid: f8c8ac24bac1ecc489afe0151158d1df, type: 3}
 --- !u!95 &77091871
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -754,7 +754,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &104399729
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +793,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &104399731
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -809,7 +810,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &110201361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5212,7 +5214,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &558598367
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5229,7 +5231,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &589187010
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,6 +5390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 605591773}
+  - component: {fileID: 605591774}
   m_Layer: 0
   m_Name: Level.Obstacles
   m_TagString: Untagged
@@ -5402,13 +5406,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605591772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -170, y: 7.17, z: -3}
+  m_LocalPosition: {x: -189.38, y: 7.17, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &605591774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605591772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907347b7aa827a9428055ec4e6a9bd56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempTarget: {fileID: 1887784301}
+  finalTarget: {fileID: 359646947}
 --- !u!1 &612723667
 GameObject:
   m_ObjectHideFlags: 0
@@ -8033,7 +8051,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &907094440
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -8050,7 +8068,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &910983948
 GameObject:
   m_ObjectHideFlags: 0
@@ -10102,7 +10121,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1138904608
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10119,7 +10138,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1139349186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10720,8 +10740,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215261806}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -202.32, y: 5.77, z: -3}
-  m_LocalScale: {x: 5, y: 2, z: 15}
+  m_LocalPosition: {x: -202.32, y: 5.77, z: -3.682}
+  m_LocalScale: {x: 5, y: 2, z: 13.396501}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653500046541}
@@ -12487,7 +12507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1465252464
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -12504,7 +12524,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1469730738
 GameObject:
   m_ObjectHideFlags: 0
@@ -13801,7 +13822,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1562064349
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13818,7 +13839,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1566313184
 GameObject:
   m_ObjectHideFlags: 0
@@ -15347,7 +15369,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1710542767
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15364,7 +15386,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1711676897
 GameObject:
   m_ObjectHideFlags: 0
@@ -16640,10 +16663,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.2
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.375, z: 0}
 --- !u!1 &1892130947
 GameObject:
   m_ObjectHideFlags: 0
@@ -17824,7 +17847,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1996426914
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -17841,7 +17864,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1997725235
 GameObject:
   m_ObjectHideFlags: 0
@@ -18305,7 +18329,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &2080393009
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18322,7 +18346,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2091445085
 GameObject:
   m_ObjectHideFlags: 0
@@ -18853,9 +18878,9 @@ MonoBehaviour:
   underwaterFriction: 0.5
   gravityMultiplierUnderWater: 1.5
   waterGravityMultiplier: 0.25
-  isUnderwater: 1
-  isGrounded: 1
-  isOnUnderwaterGround: 1
+  isUnderwater: 0
+  isGrounded: 0
+  isOnUnderwaterGround: 0
   onJump:
     m_PersistentCalls:
       m_Calls: []
@@ -18864,6 +18889,7 @@ MonoBehaviour:
   horizontalInput: -0
   gravity: -0.5674968
   deltaTime: 0.0578488
+  bot: {fileID: 558598365}
   behaviour: {fileID: 558598367}
   onEnterWater:
     m_PersistentCalls:

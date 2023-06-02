@@ -38,6 +38,11 @@ public class ControllerCore : MonoBehaviour
 
     protected Vector3 moveDirection;
 
+    [SerializeField] private Transform bot;
+    [SerializeField] private Animator behaviour;
+    private const string BEHAVIOUR = "Anim";
+
+
     protected virtual void Start()
     {
         CalculateJumpVelocity();
@@ -48,8 +53,12 @@ public class ControllerCore : MonoBehaviour
     {
         deltaTime = Time.deltaTime;
         horizontalInput = -Input.GetAxis("Horizontal");
-
         moveDirection = new Vector3(horizontalInput * moveSpeed, moveDirection.y, 0);
+
+        if (horizontalInput < 0.01f)
+            bot.rotation = Quaternion.Euler(0, -90, 0);
+        else if(horizontalInput > -0.01f)
+            bot.rotation = Quaternion.Euler(0, 90, 0);
 
         gravity = Physics.gravity.y * deltaTime;
 
@@ -68,6 +77,42 @@ public class ControllerCore : MonoBehaviour
 
         var position = transform.position;
         transform.position = new Vector3(position.x, position.y, -3f);
+
+        if (horizontalInput != 0)
+        {
+            if (isGrounded && !isJumping)
+                SetAnimation(BotBehaviour.WALK);
+            else if (isJumping && isUnderwater && !isGrounded && !isOnUnderwaterGround)
+                SetAnimation(BotBehaviour.SWIM);
+            else if (!isGrounded && isUnderwater && !isJumping)
+                SetAnimation(BotBehaviour.SWIM);
+            else if (!isGrounded && !isUnderwater && !isOnUnderwaterGround && isJumping)
+                SetAnimation(BotBehaviour.JUMP_UP);
+            else if (!isGrounded && isUnderwater && isOnUnderwaterGround && isJumping)
+                SetAnimation(BotBehaviour.SWIM);
+/*            else if (isGrounded && isUnderwater && isOnUnderwaterGround && !isJumping)
+                SetAnimation(BotBehaviour.SWIM);*/
+
+            /*            else if (isGrounded && isUnderwater && isOnUnderwaterGround && isJumping)
+                            SetAnimation(BotBehaviour.SWIM);*/
+        }
+        else
+        {
+            if (isGrounded && !isJumping)
+                SetAnimation(BotBehaviour.IDLE);
+            else if (isJumping && isUnderwater && !isGrounded && !isOnUnderwaterGround)
+                SetAnimation(BotBehaviour.SWIM);
+            else if (!isGrounded && isUnderwater && !isJumping)
+                SetAnimation(BotBehaviour.SWIM);
+            else if (!isGrounded && !isUnderwater && !isOnUnderwaterGround && isJumping)
+                SetAnimation(BotBehaviour.JUMP_UP);
+            else if (!isGrounded && isUnderwater && isOnUnderwaterGround && isJumping)
+                SetAnimation(BotBehaviour.SWIM);
+/*            else if (isGrounded && isUnderwater && isOnUnderwaterGround && !isJumping)
+                SetAnimation(BotBehaviour.SWIM);
+*/            /*            else if (isGrounded && isUnderwater && isOnUnderwaterGround && isJumping)
+                            SetAnimation(BotBehaviour.SWIM);*/
+        }
     }
 
     protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
@@ -122,6 +167,7 @@ public class ControllerCore : MonoBehaviour
         if (Input.GetButtonDown("Jump") && (isGrounded || isUnderwater || isOnUnderwaterGround) && !isJumping)
         {
             isJumping = true;
+            isGrounded = false;
             moveDirection.y = jumpVelocity;
             onJump.Invoke();
         }
@@ -137,6 +183,7 @@ public class ControllerCore : MonoBehaviour
     {
         isGrounded = true;
         isJumping = false;
+
         moveDirection.y = 0;
     }
 
@@ -150,6 +197,7 @@ public class ControllerCore : MonoBehaviour
     protected virtual void HandleWaterEnter()
     {
         isUnderwater = true;
+
         CalculateJumpVelocity();
     }
 
@@ -178,4 +226,45 @@ public class ControllerCore : MonoBehaviour
     {
         // Add initialization code for the character controller
     }
+
+    public void SetAnimation(BotBehaviour value)
+    {
+        if (value == BotBehaviour.IDLE)
+        {
+            behaviour.SetInteger(BEHAVIOUR, 0);
+        }
+
+        if (value == BotBehaviour.WALK)
+        {
+            behaviour.SetInteger(BEHAVIOUR, 1);
+        }
+
+        if (value == BotBehaviour.SWIM)
+        {
+            behaviour.SetInteger(BEHAVIOUR, 2);
+
+        }
+
+        if (value == BotBehaviour.JUMP_UP)
+        {
+            behaviour.SetInteger(BEHAVIOUR, 3);
+
+        }
+
+        if (value == BotBehaviour.JUMP_Down)
+        {
+            behaviour.SetInteger(BEHAVIOUR, 4);
+
+        }
+    }
+}
+
+
+public enum BotBehaviour
+{
+    IDLE,
+    WALK,
+    SWIM,
+    JUMP_UP,
+    JUMP_Down
 }
