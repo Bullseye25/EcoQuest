@@ -1,17 +1,24 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Barrier : MonoBehaviour
 {
     [SerializeField] private Transform tempTarget;
-
     [SerializeField] private Transform finalTarget;
 
     private Vector3 position;
-    private bool challengeSuccess = false;
-    private bool behaviour = false;
+    [SerializeField] private bool challengeSuccess = false;
+    [SerializeField] private bool behaviour = false;
+    
+    [Space]
+    [SerializeField] private UnityEvent onSuccess = new UnityEvent();
+    [Space]
+    [SerializeField] private UnityEvent onFail = new UnityEvent();
 
+    private void Start() { }
     IEnumerator OnActive()
     {
         position = transform.position;
@@ -24,8 +31,21 @@ public class Barrier : MonoBehaviour
             
              position.z);
 
-        if (behaviour == true)
-            yield return null;
+        yield return new WaitForSeconds(Time.deltaTime);
+        if (behaviour == true && challengeSuccess == false)
+        {
+            StartCoroutine(OnActive());
+
+            if (challengeSuccess == false)
+                onFail.Invoke();
+        }
+        else
+        {
+            if (challengeSuccess == true)
+            {
+                onSuccess.Invoke();
+            }
+        }
     }
 
     //Call when the player have entered trial zone

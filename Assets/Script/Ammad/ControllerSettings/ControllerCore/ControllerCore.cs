@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,7 @@ public class ControllerCore : MonoBehaviour
     [SerializeField] private Transform bot;
     [SerializeField] private Animator behaviour;
     private const string BEHAVIOUR = "Anim";
-
+    private Vector3 previousDirection;
 
     protected virtual void Start()
     {
@@ -55,10 +56,7 @@ public class ControllerCore : MonoBehaviour
         horizontalInput = -Input.GetAxis("Horizontal");
         moveDirection = new Vector3(horizontalInput * moveSpeed, moveDirection.y, 0);
 
-        if (horizontalInput < 0.01f)
-            bot.rotation = Quaternion.Euler(0, -90, 0);
-        else if(horizontalInput > -0.01f)
-            bot.rotation = Quaternion.Euler(0, 90, 0);
+        LocomotionBehaviour();
 
         gravity = Physics.gravity.y * deltaTime;
 
@@ -78,6 +76,11 @@ public class ControllerCore : MonoBehaviour
         var position = transform.position;
         transform.position = new Vector3(position.x, position.y, -3f);
 
+        HandleAnimationState();
+    }
+
+    private void HandleAnimationState()
+    {
         if (horizontalInput != 0)
         {
             if (isGrounded && !isJumping)
@@ -90,11 +93,6 @@ public class ControllerCore : MonoBehaviour
                 SetAnimation(BotBehaviour.JUMP_UP);
             else if (!isGrounded && isUnderwater && isOnUnderwaterGround && isJumping)
                 SetAnimation(BotBehaviour.SWIM);
-/*            else if (isGrounded && isUnderwater && isOnUnderwaterGround && !isJumping)
-                SetAnimation(BotBehaviour.SWIM);*/
-
-            /*            else if (isGrounded && isUnderwater && isOnUnderwaterGround && isJumping)
-                            SetAnimation(BotBehaviour.SWIM);*/
         }
         else
         {
@@ -108,11 +106,36 @@ public class ControllerCore : MonoBehaviour
                 SetAnimation(BotBehaviour.JUMP_UP);
             else if (!isGrounded && isUnderwater && isOnUnderwaterGround && isJumping)
                 SetAnimation(BotBehaviour.SWIM);
-/*            else if (isGrounded && isUnderwater && isOnUnderwaterGround && !isJumping)
-                SetAnimation(BotBehaviour.SWIM);
-*/            /*            else if (isGrounded && isUnderwater && isOnUnderwaterGround && isJumping)
-                            SetAnimation(BotBehaviour.SWIM);*/
         }
+    }
+
+    private void LocomotionBehaviour()
+    {
+        Vector3 currentDirection = Vector3.zero;
+        if (horizontalInput < -0.01f)
+        {
+            currentDirection = Vector3.left;
+        }
+        else if (horizontalInput > 0.01f)
+        {
+            currentDirection = Vector3.right;
+        }
+
+        // Set the rotation based on the previous movement direction
+        if (currentDirection != Vector3.zero)
+        {
+            previousDirection = currentDirection;
+        }
+
+        if (previousDirection == Vector3.left)
+        {
+            bot.rotation = Quaternion.Euler(0, -90, 0);
+        }
+        else if (previousDirection == Vector3.right)
+        {
+            bot.rotation = Quaternion.Euler(0, 90, 0);
+        }
+
     }
 
     protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
