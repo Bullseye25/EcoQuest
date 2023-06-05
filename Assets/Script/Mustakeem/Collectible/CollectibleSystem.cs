@@ -17,7 +17,7 @@ public class CollectibleSystem : CollectibleSystemBase
     private bool hasActivated = false;
 
     private PlayerMovement timerController;
-     [SerializeField] private HealthManage health;
+     [SerializeField] private HealthController health;
      private Levels levels;
 
 

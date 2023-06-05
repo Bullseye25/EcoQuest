@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
      [SerializeField]    private ParticleSystem particles;
      [SerializeField]    private bool isJumping = false;
      [SerializeField]    private float jumpVelocity;
-     [SerializeField]    private HealthManage health;
+     [SerializeField]    private HealthController health;
      [SerializeField]    private TextMeshProUGUI timerText;
      [SerializeField]    private Slider timerSlider;
      [SerializeField]    private float gameTime = 120f;
@@ -44,8 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("is walking" + isWalking);
-        Debug.Log("is underwater" + isUnderwater);
+       
        // Joystick input
         float joystickInput = -joystick.Horizontal;
         MovePlayer(joystickInput);
@@ -177,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
         case "Ground":
             isGrounded = true;
             isJumping = false;
+
             rb.velocity = Vector3.zero; // set velocity to zero
             break;
         case "UnderWaterGround":
@@ -186,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
             break;
         case "Shark":
             health.BigDamage();
+            Debug.Log("shark");
             particles.Play();
             moveSpeed = 0;
             jumpHeight = 0;
