@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
      [SerializeField]    private float gravityMultiplierUnderWater;
      [SerializeField]    private float waterGravityMultiplier;
      [SerializeField]    private Joystick joystick;
-     [SerializeField]private float rotationSpeed = 200f;
+     [SerializeField]    private float rotationSpeed = 200f;
      [SerializeField]    private bool isUnderwater = false;
      [SerializeField]    private bool isGrounded = false;
      [SerializeField]    private bool isOnUnderwaterGround = false;
@@ -25,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
      [SerializeField]    private TextMeshProUGUI timerText;
      [SerializeField]    private Slider timerSlider;
      [SerializeField]    private float gameTime = 120f;
+      public Animator animator;
+    private PlayerAnimation playerAnimation;
+
+    private bool isWalking = false;
+    private bool onGround = true;
     private Timer timer;
 
     void Start()
@@ -34,10 +39,13 @@ public class PlayerMovement : MonoBehaviour
         timer = new Timer(gameTime);
         timerSlider.maxValue = gameTime;
         timerSlider.value = gameTime;
+        playerAnimation = new PlayerAnimation(animator);
     }
 
     void Update()
     {
+        Debug.Log("is walking" + isWalking);
+        Debug.Log("is underwater" + isUnderwater);
        // Joystick input
         float joystickInput = -joystick.Horizontal;
         MovePlayer(joystickInput);
@@ -45,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
         // Keyboard input
         float keyboardInput = -Input.GetAxis("Horizontal");
         MovePlayer(keyboardInput);
-        
+         // Set animation states based on player actions
+        playerAnimation.UpdateAnimations(isUnderwater, isWalking);
 
         if (isUnderwater && !isOnUnderwaterGround)
         {
@@ -63,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             
             rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
-
+            Jump(playerAnimation);
         }
 
         // Additional code for swimming up
@@ -75,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isUnderwater)
         {
-
+          //  PlayerAnimation.onGround = true;
             timer.Decrement(Time.deltaTime);
 
             if (timer.HasExpired())
@@ -108,8 +117,16 @@ public class PlayerMovement : MonoBehaviour
             UpdateTimerUI();
         }
     }
+    private void Jump(PlayerAnimation playerAnimation)
+    {
+        if (onGround)
+        {
+            playerAnimation.TriggerJump();
+        }
+    }
      private void MovePlayer(float input)
     {
+        isWalking = true;
        // Calculate movement direction
         Vector3 movement = new Vector3(input, 0f, 0f);
 
