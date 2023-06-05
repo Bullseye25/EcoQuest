@@ -10,7 +10,10 @@ public class NodesPath : MonoBehaviour
     [Space]
     [SerializeField] private bool doLoop;
     [SerializeField] private Transform[] points;
-    
+
+    [Space]
+    [SerializeField] private bool rotationAct;
+
     [Space]
     [SerializeField] private UnityEvent uponComplete = new UnityEvent();
 
@@ -21,6 +24,9 @@ public class NodesPath : MonoBehaviour
         // Check if there are points to move towards
         if (points.Length > 0)
         {
+            if (doLoop == false && currentPointIndex >= points.Length)
+                return;
+
             // Get the current point to move towards
             Transform currentPoint = points[currentPointIndex];
 
@@ -33,7 +39,14 @@ public class NodesPath : MonoBehaviour
             if (lookDirection != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 2 * speed * Time.deltaTime);
+                if (rotationAct == false)
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 2 * speed * Time.deltaTime);
+                else
+                {
+                    transform.LookAt(currentPoint.position);
+                    var rotation = transform.rotation.eulerAngles;
+                    transform.rotation = Quaternion.Euler(rotation.x, rotation.y +90, rotation.z);
+                }
             }
 
             // Check if the game object has reached the current point
