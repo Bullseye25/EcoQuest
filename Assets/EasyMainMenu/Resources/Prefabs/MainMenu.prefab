@@ -35,11 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -7.5, y: 0}
-=======
-  m_AnchoredPosition: {x: -7.500001, y: 0}
->>>>>>> Ammad-Dev-Branch
   m_SizeDelta: {x: -15, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222860944055479346
@@ -1929,11 +1925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -7.5, y: 0}
-=======
-  m_AnchoredPosition: {x: -7.500001, y: 0}
->>>>>>> Ammad-Dev-Branch
   m_SizeDelta: {x: -15, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222624389816414986
@@ -2518,11 +2510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -7.5, y: 0}
-=======
-  m_AnchoredPosition: {x: -7.500001, y: 0}
->>>>>>> Ammad-Dev-Branch
   m_SizeDelta: {x: -15, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222155871178038080
@@ -3337,11 +3325,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &95447456984773300
 Animator:
-<<<<<<< HEAD
   serializedVersion: 5
-=======
-  serializedVersion: 4
->>>>>>> Ammad-Dev-Branch
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3358,11 +3342,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-<<<<<<< HEAD
   m_KeepAnimatorStateOnDisable: 0
-=======
-  m_KeepAnimatorControllerStateOnDisable: 0
->>>>>>> Ammad-Dev-Branch
 --- !u!225 &225175285026823094
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4495,11 +4475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -7.5, y: 0}
-=======
-  m_AnchoredPosition: {x: -7.500001, y: 0}
->>>>>>> Ammad-Dev-Branch
   m_SizeDelta: {x: -15, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222236973866908942
@@ -5516,11 +5492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -7.5, y: 0}
-=======
-  m_AnchoredPosition: {x: -7.500001, y: 0}
->>>>>>> Ammad-Dev-Branch
   m_SizeDelta: {x: -15, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222660756498028184
@@ -6610,11 +6582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: 227.78, y: -58.800003}
-=======
-  m_AnchoredPosition: {x: 227.78, y: -58.8}
->>>>>>> Ammad-Dev-Branch
   m_SizeDelta: {x: 713, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222285498348771684
@@ -8057,11 +8025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -7.5, y: 0}
-=======
-  m_AnchoredPosition: {x: -7.500001, y: 0}
->>>>>>> Ammad-Dev-Branch
   m_SizeDelta: {x: -15, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222996617647532426
@@ -11504,11 +11468,7 @@ MonoBehaviour:
     m_Bits: 4294967295
 --- !u!95 &95361483744920556
 Animator:
-<<<<<<< HEAD
   serializedVersion: 5
-=======
-  serializedVersion: 4
->>>>>>> Ammad-Dev-Branch
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11525,11 +11485,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-<<<<<<< HEAD
   m_KeepAnimatorStateOnDisable: 0
-=======
-  m_KeepAnimatorControllerStateOnDisable: 0
->>>>>>> Ammad-Dev-Branch
 --- !u!114 &114635606570717398
 MonoBehaviour:
   m_ObjectHideFlags: 0
