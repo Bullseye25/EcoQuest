@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class HealthController : MonoBehaviour
     
     [Space]
     [SerializeField] private float bigGain, smallGain, bigDamage, smallDamange;
+
+    [Space]
+    [SerializeField] private UnityEvent uponDeth = new UnityEvent();
 
     private float currentHealth;
 
@@ -33,6 +37,7 @@ public class HealthController : MonoBehaviour
         {
             rect.anchoredPosition = new Vector2(398.6306f, rect.anchoredPosition.y);
             currentHealth = 0.0f;
+            uponDeth.Invoke();
         }
         else
         {

@@ -9,7 +9,7 @@ public class ControllerCore : MonoBehaviour
     [Header("Controller Core")]
 
     [SerializeField] protected CharacterController characterController;
-    
+
     [Space]
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float jumpHeight;
@@ -279,6 +279,11 @@ public class ControllerCore : MonoBehaviour
             behaviour.SetInteger(BEHAVIOUR, 4);
 
         }
+    }
+
+    public void SetAnimation(int value)
+    {
+        behaviour.SetInteger(BEHAVIOUR, value);
     }
 }
 

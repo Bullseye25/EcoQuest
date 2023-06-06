@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Ammad-Dev-Branch
 public class MainMenuController : MonoBehaviour {
 
     Animator anim;
@@ -18,8 +21,11 @@ public class MainMenuController : MonoBehaviour {
     public GameObject ControlsPanel;
     public GameObject GfxPanel;
     public GameObject LoadGamePanel;
+<<<<<<< HEAD
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject player;
+=======
+>>>>>>> Ammad-Dev-Branch
 
     // Use this for initialization
     void Start () {
@@ -129,7 +135,15 @@ public class MainMenuController : MonoBehaviour {
 
     public void newGame()
     {
+<<<<<<< HEAD
         SceneManager.LoadScene("MainScene");
+=======
+        if (!string.IsNullOrEmpty(newGameSceneName))
+            SceneManager.LoadScene(newGameSceneName);
+        else
+            Debug.Log("Please write a scene name in the 'newGameSceneName' field of the Main Menu Script and don't forget to " +
+                "add that scene in the Build Settings!");
+>>>>>>> Ammad-Dev-Branch
     }
     #endregion
 
@@ -173,6 +187,7 @@ public class MainMenuController : MonoBehaviour {
 
     }
 
+<<<<<<< HEAD
     public void pauseGame()
     {
         pausePanel.SetActive(true);
@@ -187,6 +202,8 @@ public class MainMenuController : MonoBehaviour {
         SceneManager.LoadScene("MainMenu");
     }
 
+=======
+>>>>>>> Ammad-Dev-Branch
 
     #endregion
 }
