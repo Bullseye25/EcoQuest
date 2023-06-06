@@ -1,75 +1,66 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private Image healthBar;
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private RectTransform rect;
     [SerializeField] private float currentHealth;
-    public GameObject player;
 
-    private void Start()
+    public void UpdateHealth(float healthChange)
     {
-        currentHealth = maxHealth;
-        UpdateHealthBar();
-    }
+        float transformedChange = healthChange * (100.0f / 205.0f); // map from -102.5 to 102.5 to 0 to 100
+        currentHealth += transformedChange;
 
-    private void Update()
-    {
-        if (currentHealth <= 0)
+        // keep health within bounds of 0 to 100
+        if (currentHealth > 100.0f)
         {
-            player.SetActive(false);
+            rect.anchoredPosition = new Vector2(102.5f, rect.anchoredPosition.y);
+            currentHealth = 100.0f;
+        }
+        else if (currentHealth < 0.0f)
+        {
+            rect.anchoredPosition = new Vector2(-102.5f, rect.anchoredPosition.y);
+            currentHealth = 0.0f;
+        }
+        else
+        {
+            rect.anchoredPosition = new Vector2(healthChange + rect.anchoredPosition.x, rect.anchoredPosition.y);
         }
     }
 
-    public void TakeDamage(float damage)
-    {
-        currentHealth = Mathf.Max(0, currentHealth - damage);
-        UpdateHealthBar();
-    }
-
-    public void Heal(float healingAmount)
-    {
-        currentHealth = Mathf.Min(maxHealth, currentHealth + healingAmount);
-        UpdateHealthBar();
-    }
-
-    private void UpdateHealthBar()
-    {
-        healthBar.fillAmount = currentHealth / maxHealth;
-    }
-
     [ContextMenu("ResetHealth")]
-    public void ResetHealth()
+    public virtual void ResetHealth()
     {
-        currentHealth = maxHealth;
-        UpdateHealthBar();
+        UpdateHealth(100);
     }
 
     [ContextMenu("GainBigHealth")]
-    public void GainBigHealth()
+    public virtual void GainBigHealth()
     {
-        Heal(45);
+        UpdateHealth(45);
     }
 
-    [ContextMenu("GainSmallHealth")]
-    public void GainSmallHealth()
+    [ContextMenu("GainSamllHealth")]
+    public virtual void GainSamllHealth()
     {
-        Heal(25);
+        UpdateHealth(25);
     }
 
     [ContextMenu("BigDamage")]
-    public void BigDamage()
+    public virtual void BigDamage()
     {
-        Debug.Log("bigDamage");
-        TakeDamage(40);
+        UpdateHealth(-35);
     }
 
     [ContextMenu("SmallDamage")]
-    public void SmallDamage()
+    public virtual void SmallDamage()
     {
-        TakeDamage(10);
+        UpdateHealth(-15);
     }
 
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
 }

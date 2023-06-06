@@ -5,7 +5,6 @@ public class EnemyController : MonoBehaviour
 {
     [System.Serializable]
 
-
     public struct WaypointData
     {
         public Transform waypoint;
@@ -19,7 +18,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float detectionRange = 5f;
-    [SerializeField] private GameObject bloodPoint;
 
     private IMoveBehavior moveBehavior;
     private Animator animator;
@@ -28,7 +26,6 @@ public class EnemyController : MonoBehaviour
     {
         SetMoveBehavior(new Walk());
         animator = GetComponent<Animator>();
-        bloodPoint.SetActive(false);
     }
 
     private void Update()

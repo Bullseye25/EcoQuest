@@ -15,10 +15,6 @@ public class EventOperator : MonoBehaviour
     {
         if (_target.transform == target)
             onEnter.Invoke();
-        // if(_target.CompareTag("Shark"))
-        // {
-        //     onEnter.Invoke();
-        // }
     }
 
     private void OnTriggerExit(Collider _target)

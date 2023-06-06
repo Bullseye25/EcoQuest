@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
      [SerializeField]    private ParticleSystem particles;
      [SerializeField]    private bool isJumping = false;
      [SerializeField]    private float jumpVelocity;
-     [SerializeField]    private HealthController health;
+     [SerializeField]    private HealthManager health;
      [SerializeField]    private TextMeshProUGUI timerText;
      [SerializeField]    private Slider timerSlider;
      [SerializeField]    private float gameTime = 120f;
@@ -39,12 +39,13 @@ public class PlayerMovement : MonoBehaviour
         timer = new Timer(gameTime);
         timerSlider.maxValue = gameTime;
         timerSlider.value = gameTime;
-        playerAnimation = new PlayerAnimation(animator);
+      //  playerAnimation = new PlayerAnimation(animator);
     }
 
     void Update()
     {
-       
+        Debug.Log("is walking" + isWalking);
+        Debug.Log("is underwater" + isUnderwater);
        // Joystick input
         float joystickInput = -joystick.Horizontal;
         MovePlayer(joystickInput);
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         float keyboardInput = -Input.GetAxis("Horizontal");
         MovePlayer(keyboardInput);
          // Set animation states based on player actions
-        playerAnimation.UpdateAnimations(isUnderwater, isWalking);
+      //  playerAnimation.UpdateAnimations(isUnderwater, isWalking);
 
         if (isUnderwater && !isOnUnderwaterGround)
         {
@@ -120,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (onGround)
         {
-            playerAnimation.TriggerJump();
+           // playerAnimation.TriggerJump();
         }
     }
      private void MovePlayer(float input)
@@ -176,7 +177,6 @@ public class PlayerMovement : MonoBehaviour
         case "Ground":
             isGrounded = true;
             isJumping = false;
-
             rb.velocity = Vector3.zero; // set velocity to zero
             break;
         case "UnderWaterGround":
@@ -186,7 +186,6 @@ public class PlayerMovement : MonoBehaviour
             break;
         case "Shark":
             health.BigDamage();
-            Debug.Log("shark");
             particles.Play();
             moveSpeed = 0;
             jumpHeight = 0;
