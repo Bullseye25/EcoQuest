@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private GameObject bloodImg;
 
     private IMoveBehavior moveBehavior;
     private Animator animator;
@@ -26,6 +27,7 @@ public class EnemyController : MonoBehaviour
     {
         SetMoveBehavior(new Walk());
         animator = GetComponent<Animator>();
+        bloodImg.SetActive(false);
     }
 
     private void Update()

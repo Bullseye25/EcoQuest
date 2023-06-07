@@ -1,36 +1,42 @@
 fileFormatVersion: 2
-guid: a0b9461c2e9ebeb4489a2f4d677fc3b8
+guid: 0fcc2b7180462e64cbb93a1308a37292
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -3568019874175020390
-    second: Hawksbill.armature|Hawksbill.armatureAction
-  - first:
-      74: -7243773092485388028
-    second: Hawksbill.armature|Hawksbill.meshAction
-  - first:
-      74: -5767829112303558407
-    second: Hawksbill.armature|Smooth Shark.001Action
-  - first:
-      74: -5757033768317979716
-    second: Hawksbill.armature|Smooth Shark.001Action.001
+      74: 1827226128182048838
+    second: Take 001
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: hawksbill.body
-    second: {fileID: 2100000, guid: 828fa622cd1897243987806886c25272, type: 2}
+      name: CrabSweet
+    second: {fileID: 2100000, guid: e104a0fcc8c69e049b18694a6e92395f, type: 2}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: hawksbill.eyes
-    second: {fileID: 2100000, guid: a9727d7e46b92aa49a139f99bdbbd6b6, type: 2}
+      name: new_1_CrabSweet_BaseColor
+    second: {fileID: 2800000, guid: 39325f50ab69dbd4fa232fdd6066853a, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: outer
-    second: {fileID: 2100000, guid: 0a0c1a5225cc1ef48956f30e24e5a5ad, type: 2}
+      name: new_1_CrabSweet_Height
+    second: {fileID: 2800000, guid: 6a0f277c7e1e9764ba907eefe2971503, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: new_1_CrabSweet_Metallic
+    second: {fileID: 2800000, guid: a3413a837aa7f2f479ad5e4fd8a4427c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: new_1_CrabSweet_Normal
+    second: {fileID: 2800000, guid: 90e2b85ace7718549b618e2f12b3b86c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: new_1_CrabSweet_Roughness
+    second: {fileID: 2800000, guid: b5f36f538d93cbb45a47dc2968c5503b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -12,6 +12,7 @@ TagManager:
   - Water
   - Target
   - smallFish
+  - Key
   layers:
   - Default
   - TransparentFX

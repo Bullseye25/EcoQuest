@@ -1,36 +1,22 @@
 fileFormatVersion: 2
-guid: a0b9461c2e9ebeb4489a2f4d677fc3b8
+guid: 45c8af7a17ba6c5489770e6800f2271b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -3568019874175020390
-    second: Hawksbill.armature|Hawksbill.armatureAction
-  - first:
-      74: -7243773092485388028
-    second: Hawksbill.armature|Hawksbill.meshAction
-  - first:
-      74: -5767829112303558407
-    second: Hawksbill.armature|Smooth Shark.001Action
-  - first:
-      74: -5757033768317979716
-    second: Hawksbill.armature|Smooth Shark.001Action.001
+      74: 1827226128182048838
+    second: Take 001
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: hawksbill.body
-    second: {fileID: 2100000, guid: 828fa622cd1897243987806886c25272, type: 2}
+      name: Crab
+    second: {fileID: 2100000, guid: 7ef7be22b5b5d98499e45f13727593b2, type: 2}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: hawksbill.eyes
-    second: {fileID: 2100000, guid: a9727d7e46b92aa49a139f99bdbbd6b6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: outer
-    second: {fileID: 2100000, guid: 0a0c1a5225cc1ef48956f30e24e5a5ad, type: 2}
+      name: new_Crab_Crab_BaseColor
+    second: {fileID: 2800000, guid: c27ed4c8a733b9745bc2800d0b3d6aad, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class MainMenuController : MonoBehaviour {
 
     Animator anim;
@@ -18,8 +17,6 @@ public class MainMenuController : MonoBehaviour {
     public GameObject ControlsPanel;
     public GameObject GfxPanel;
     public GameObject LoadGamePanel;
-    [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject player;
 
     // Use this for initialization
     void Start () {
@@ -129,7 +126,11 @@ public class MainMenuController : MonoBehaviour {
 
     public void newGame()
     {
-        SceneManager.LoadScene("MainScene");
+        if (!string.IsNullOrEmpty(newGameSceneName))
+            SceneManager.LoadScene(newGameSceneName);
+        else
+            Debug.Log("Please write a scene name in the 'newGameSceneName' field of the Main Menu Script and don't forget to " +
+                "add that scene in the Build Settings!");
     }
     #endregion
 
@@ -171,20 +172,6 @@ public class MainMenuController : MonoBehaviour {
 
     void playClickSound() {
 
-    }
-
-    public void pauseGame()
-    {
-        pausePanel.SetActive(true);
-        player.SetActive(false);
-    }
-    public void resumeGame(){
-        player.SetActive(true);
-        pausePanel.SetActive(false);
-    }
-    public void homeGame()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 
 

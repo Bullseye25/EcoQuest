@@ -13,8 +13,8 @@ public class CollectibleSystem : CollectibleSystemBase
      [SerializeField] private TextMeshProUGUI AntidoteText;
      [SerializeField] public static bool cylinder;
      [SerializeField] public GameObject keyObj;
-     private float activationTime = 2f;
-    private bool hasActivated = false;
+   //  private float activationTime = 2f;
+   // private bool hasActivated = false;
 
     private PlayerMovement timerController;
      [SerializeField] private HealthManager health;
@@ -44,7 +44,7 @@ public class CollectibleSystem : CollectibleSystemBase
         {
            // Debug.Log(AntidotHelp.score);
             keyObj.SetActive(true);
-            hasActivated = true;
+          //  hasActivated = true;
           
             levels.complete();
         }

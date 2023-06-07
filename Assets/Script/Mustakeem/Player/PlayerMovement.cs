@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
      [SerializeField]    private float gravityMultiplierUnderWater;
      [SerializeField]    private float waterGravityMultiplier;
      [SerializeField]    private Joystick joystick;
-     [SerializeField]    private float rotationSpeed = 200f;
+   //  [SerializeField]    private float rotationSpeed = 200f;
      [SerializeField]    private bool isUnderwater = false;
      [SerializeField]    private bool isGrounded = false;
      [SerializeField]    private bool isOnUnderwaterGround = false;
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
       public Animator animator;
     private PlayerAnimation playerAnimation;
 
-    private bool isWalking = false;
+  //  private bool isWalking = false;
     private bool onGround = true;
     private Timer timer;
 
@@ -44,8 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("is walking" + isWalking);
-        Debug.Log("is underwater" + isUnderwater);
+        // Debug.Log("is walking" + isWalking);
+        // Debug.Log("is underwater" + isUnderwater);
        // Joystick input
         float joystickInput = -joystick.Horizontal;
         MovePlayer(joystickInput);
@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
     }
      private void MovePlayer(float input)
     {
-        isWalking = true;
+      //  isWalking = true;
        // Calculate movement direction
         Vector3 movement = new Vector3(input, 0f, 0f);
 
@@ -238,6 +238,10 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
             rb.drag = underwaterFriction;
             rb.useGravity = true;
+        }
+        else if(other.CompareTag("Key"))
+        {
+            other.gameObject.SetActive(false);
         }
     }
 

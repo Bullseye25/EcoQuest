@@ -1,12 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider;
-    [SerializeField] private Rigidbody rb;
-    private RigidbodyConstraints originalConstraints;
-    [SerializeField] private MonoBehaviour PlayerMovement;
+    [SerializeField] private GameObject player;
     [SerializeField] private GameObject pausePanel;
 
    
@@ -14,7 +13,7 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        originalConstraints = rb.constraints;
+       
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
@@ -31,20 +30,23 @@ public class Menu : MonoBehaviour
     public void Pause()
     {
         pausePanel.SetActive(true);
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        PlayerMovement.enabled = false;
+        player.SetActive(false);
+        
     }
     public void Resume()
     {
         pausePanel.SetActive(false);
-        rb.constraints = originalConstraints;
-        PlayerMovement.enabled = true;
+        player.SetActive(true);
+        
     }
     public void Exit()
     {
         Application.Quit();
     }
-
+    public void homeGame()
+    {
+        SceneManager.LoadScene("MainMenue");
+    }
 
     // Sound Slider Settings
     public void ChangeVolume()
