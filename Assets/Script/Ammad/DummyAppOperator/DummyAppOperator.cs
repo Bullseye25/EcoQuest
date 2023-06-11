@@ -16,8 +16,14 @@ public class DummyAppOperator : MonoBehaviour
 
     private void Awake()
     {
+        gameObject.SetActive(true);
         screen.color = endColor;
         UponGameStart();
+    }
+
+    public void ExitToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void UponReset()
@@ -32,11 +38,13 @@ public class DummyAppOperator : MonoBehaviour
 
     public void UponGameStart()
     {
+        gameObject.SetActive(true);
         StartCoroutine(ManageScreenColor(true));
     }
 
     public void UponGameEnd()
     {
+        gameObject.SetActive(true);
         StartCoroutine(ManageScreenColor(false));
     }
 
@@ -60,5 +68,7 @@ public class DummyAppOperator : MonoBehaviour
             screen.color = currentColor;
             yield return null;
         }
+
+        gameObject.SetActive(false);
     }
 }

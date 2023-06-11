@@ -131,7 +131,7 @@ namespace OffAxisStudios
 			RenderTexture highlightRt;
 
 #if UNITY_ANDROID
-        RenderTexture.active = highlightRT = RenderTexture.GetTemporary(m_RTWidth, m_RTHeight, 0, RenderTextureFormat.ARGB32 );
+        RenderTexture.active = highlightRt = RenderTexture.GetTemporary(_rtWidth, _rtHeight, 0, RenderTextureFormat.ARGB32 );
 #else
 			RenderTexture.active = highlightRt = RenderTexture.GetTemporary(_rtWidth, _rtHeight, 0, RenderTextureFormat.R8);
 #endif
@@ -143,12 +143,12 @@ namespace OffAxisStudios
 			RenderHighlights(highlightRt);
 
 #if UNITY_ANDROID
-        RenderTexture.active = highlightRT = RenderTexture.GetTemporary(m_RTWidth, m_RTHeight, 0, RenderTextureFormat.ARGB32 );
+        RenderTexture.active = highlightRt = RenderTexture.GetTemporary(_rtWidth, _rtHeight, 0, RenderTextureFormat.ARGB32 );
 #else
 			var blurred = RenderTexture.GetTemporary(_rtWidth, _rtHeight, 0, RenderTextureFormat.R8);
 #endif
 
-			_blur.OnRenderImage(highlightRt, blurred);
+			_blur.OnRenderImage(highlightRt, RenderTexture.active);
 
 
 			RenderOccluders(highlightRt);
@@ -156,28 +156,28 @@ namespace OffAxisStudios
 			if (RenderFillType == FillType.Outline)
 			{
 #if UNITY_ANDROID
-            RenderTexture.active = highlightRT = RenderTexture.GetTemporary(m_RTWidth, m_RTHeight, 0, RenderTextureFormat.ARGB32 );
+            RenderTexture.active = highlightRt = RenderTexture.GetTemporary(_rtWidth, _rtHeight, 0, RenderTextureFormat.ARGB32 );
 #else
 				var occluded = RenderTexture.GetTemporary(_rtWidth, _rtHeight, 0, RenderTextureFormat.R8);
 #endif
 				_highlightMaterial.SetTexture("_OccludeMap", highlightRt);
-				Graphics.Blit(blurred, occluded, _highlightMaterial, 2);
+				Graphics.Blit(RenderTexture.active, RenderTexture.active, _highlightMaterial, 2);
 
-				_highlightMaterial.SetTexture("_OccludeMap", occluded);
+				_highlightMaterial.SetTexture("_OccludeMap", RenderTexture.active);
 
-				RenderTexture.ReleaseTemporary(occluded);
+				RenderTexture.ReleaseTemporary(RenderTexture.active);
 
 			}
 			else
 			{
-				_highlightMaterial.SetTexture("_OccludeMap", blurred);
+				_highlightMaterial.SetTexture("_OccludeMap", RenderTexture.active);
 			}
 
 			_highlightMaterial.SetColor("_Color", HighlightColour);
 			Graphics.Blit(source, destination, _highlightMaterial, (int)SelectedEffect);
 
 
-			RenderTexture.ReleaseTemporary(blurred);
+			RenderTexture.ReleaseTemporary(RenderTexture.active);
 			RenderTexture.ReleaseTemporary(highlightRt);
 		}
 	}

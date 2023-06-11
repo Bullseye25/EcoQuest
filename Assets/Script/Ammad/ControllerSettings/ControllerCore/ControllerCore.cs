@@ -44,6 +44,18 @@ public class ControllerCore : MonoBehaviour
     private const string BEHAVIOUR = "Anim";
     private Vector3 previousDirection;
 
+    private bool jumpAct = false;
+
+    public void InputAct(Vector2 inputAccess)
+    {
+        horizontalInput = -inputAccess.normalized.x;
+    }
+
+    public void JumpAct(bool value)
+    {
+        jumpAct = value;
+    }
+
     protected virtual void Start()
     {
         CalculateJumpVelocity();
@@ -53,7 +65,7 @@ public class ControllerCore : MonoBehaviour
     protected virtual void Update()
     {
         deltaTime = Time.deltaTime;
-        horizontalInput = -Input.GetAxis("Horizontal");
+/*        horizontalInput = -Input.GetAxis("Horizontal");*/
         moveDirection = new Vector3(horizontalInput * moveSpeed, moveDirection.y, 0);
 
         LocomotionBehaviour();
@@ -187,7 +199,7 @@ public class ControllerCore : MonoBehaviour
 
     protected virtual void HandleJump()
     {
-        if (Input.GetButtonDown("Jump") && (isGrounded || isUnderwater || isOnUnderwaterGround) && !isJumping)
+        if (jumpAct/*Input.GetButtonDown("Jump")*/ && (isGrounded || isUnderwater || isOnUnderwaterGround) && !isJumping)
         {
             isJumping = true;
             isGrounded = false;
@@ -195,7 +207,7 @@ public class ControllerCore : MonoBehaviour
             onJump.Invoke();
         }
 
-        if (isUnderwater && Input.GetButtonDown("Jump"))
+        if (isUnderwater && jumpAct/*Input.GetButtonDown("Jump")*/)
         {
             moveDirection.y = jumpVelocity;
             onJump.Invoke();

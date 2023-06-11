@@ -11,6 +11,7 @@ public enum AudioType
 
 public class AudioManager : MonoBehaviour
 {
+    private const float MAX_VOLUME = 0.01f;
     [SerializeField] private AudioSource musicHolder;
     [SerializeField] private AudioClip gameMusic;
 
@@ -36,14 +37,14 @@ public class AudioManager : MonoBehaviour
 
         if (startGame)
         {
-            source.volume += Time.deltaTime;
-            if (source.volume < 0.5f)
+            source.volume += 0.005f;
+            if (source.volume < 0.05f)
                 StartCoroutine(MusicVolumeOperator(source));
         }
         else
         {
-            source.volume -= Time.deltaTime;
-            if (source.volume > 0.01f)
+            source.volume -= 0.005f;
+            if (source.volume > 0.005f)
                 StartCoroutine(MusicVolumeOperator(source, false));
         }
 
@@ -77,7 +78,7 @@ public class AudioManager : MonoBehaviour
     {
         var source = GetSource();
         source.clip = clip;
-        source.volume = 0.5f;
+        source.volume = MAX_VOLUME;
         source.Play();
     }
 
@@ -93,7 +94,7 @@ public class AudioManager : MonoBehaviour
         sources.Add(newSource);
         newSource.loop = false;
         newSource.playOnAwake = false;
-        newSource.volume = 0.5f;
+        newSource.volume = 0;
         return newSource;
     }
 }
