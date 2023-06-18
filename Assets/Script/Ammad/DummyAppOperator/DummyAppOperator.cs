@@ -31,6 +31,11 @@ public class DummyAppOperator : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void ProceedToLevel2()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void OnQuit()
     {
         Application.Quit();

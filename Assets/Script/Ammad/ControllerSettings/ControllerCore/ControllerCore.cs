@@ -65,7 +65,7 @@ public class ControllerCore : MonoBehaviour
     protected virtual void Update()
     {
         deltaTime = Time.deltaTime;
-/*        horizontalInput = -Input.GetAxis("Horizontal");*/
+        horizontalInput = -Input.GetAxis("Horizontal");
         moveDirection = new Vector3(horizontalInput * moveSpeed, moveDirection.y, 0);
 
         LocomotionBehaviour();
@@ -199,7 +199,7 @@ public class ControllerCore : MonoBehaviour
 
     protected virtual void HandleJump()
     {
-        if (jumpAct/*Input.GetButtonDown("Jump")*/ && (isGrounded || isUnderwater || isOnUnderwaterGround) && !isJumping)
+        if (/*jumpAct*/Input.GetButtonDown("Jump") && (isGrounded || isUnderwater || isOnUnderwaterGround) && !isJumping)
         {
             isJumping = true;
             isGrounded = false;
@@ -207,7 +207,7 @@ public class ControllerCore : MonoBehaviour
             onJump.Invoke();
         }
 
-        if (isUnderwater && jumpAct/*Input.GetButtonDown("Jump")*/)
+        if (isUnderwater && /*jumpAct*/Input.GetButtonDown("Jump"))
         {
             moveDirection.y = jumpVelocity;
             onJump.Invoke();
