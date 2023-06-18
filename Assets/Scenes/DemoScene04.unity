@@ -4561,7 +4561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &248445869
 Transform:
   m_ObjectHideFlags: 0
@@ -22410,6 +22410,10 @@ PrefabInstance:
       value: Terrain_Modular_Tiles_Grass_Dirt_Ramp_Corner_Large_01 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4335409586334853943, guid: 496013e3aa5dc554aaf94790196a8407, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335409586334853943, guid: 496013e3aa5dc554aaf94790196a8407, type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
@@ -24774,8 +24778,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405709563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.1, y: -7.15, z: -48.8}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -76.4, y: -7.15, z: -48.8}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1076280155}
