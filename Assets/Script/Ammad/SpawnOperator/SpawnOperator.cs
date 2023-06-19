@@ -6,6 +6,7 @@ public class SpawnOperator : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
     [SerializeField] private Transform spawPoint;
+    [SerializeField] private bool enable;
 
     public void SetPrefab(GameObject newPrefab)
     {
@@ -19,6 +20,13 @@ public class SpawnOperator : MonoBehaviour
 
     public void SpawnPrefab()
     {
-        Instantiate(prefab, spawPoint.position, spawPoint.rotation);
+        if (enable == false)
+            Instantiate(prefab, spawPoint.position, spawPoint.rotation);
+        else
+        {
+            prefab.SetActive(true);
+            prefab.transform.localPosition = spawPoint.localPosition;
+            prefab.transform.localRotation = spawPoint.localRotation;
+        }
     }
 }
