@@ -74,6 +74,7 @@ public class DummyAppOperator : MonoBehaviour
             yield return null;
         }
 
+        if (isStarting == true) 
         gameObject.SetActive(false);
     }
 }

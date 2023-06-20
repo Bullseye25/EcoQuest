@@ -55,4 +55,8 @@ public class ControllerSettings : ControllerCore
         onExitWater.Invoke();
     }
 
+    public void SetParentNull()
+    {
+        transform.SetParent(null);
+    }
 }

@@ -7,6 +7,9 @@ public class FollowTarget : MonoBehaviour
     [SerializeField] private bool rotateWhileMoving = true;
     [SerializeField] private bool allowYRotation;
 
+    [Space]
+    [SerializeField] private bool freezeYAxisPos = false;
+
     private Vector3 previousPosition;
 
     private void Start()
@@ -21,7 +24,13 @@ public class FollowTarget : MonoBehaviour
             return;
 
         // Move towards the target position
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        if (freezeYAxisPos == false)
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        else 
+        {
+            var pos = new Vector3(target.position.x, transform.position.y, target.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
+        }
 
         if (rotateWhileMoving)
         {
