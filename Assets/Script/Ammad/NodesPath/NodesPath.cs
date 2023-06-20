@@ -13,6 +13,7 @@ public class NodesPath : MonoBehaviour
 
     [Space]
     [SerializeField] private bool rotationAct;
+    [SerializeField] private bool rotationFreeze = false;
 
     [Space]
     [SerializeField] private UnityEvent uponComplete = new UnityEvent();
@@ -38,14 +39,17 @@ public class NodesPath : MonoBehaviour
             // lookDirection.y = 0f; // Lock rotation on the y-axis
             if (lookDirection != Vector3.zero)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                if (rotationAct == false)
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 2 * speed * Time.deltaTime);
-                else
+                if(rotationFreeze == false)
                 {
-                    transform.LookAt(currentPoint.position);
-                    var rotation = transform.rotation.eulerAngles;
-                    transform.rotation = Quaternion.Euler(rotation.x, rotation.y +90, rotation.z);
+                    Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                    if (rotationAct == false)
+                        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 2 * speed * Time.deltaTime);
+                    else
+                    {
+                        transform.LookAt(currentPoint.position);
+                        var rotation = transform.rotation.eulerAngles;
+                        transform.rotation = Quaternion.Euler(rotation.x, rotation.y + 90, rotation.z);
+                    }
                 }
             }
 

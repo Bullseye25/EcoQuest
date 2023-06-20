@@ -8,6 +8,8 @@ public class SharkBehaviour : MonoBehaviour
 
     [SerializeField] private float movementSpeed = 3f; // Adjust the movement speed as desired
     [SerializeField] private float radius;
+    [SerializeField] private bool freezeZAxis = true;
+    [SerializeField] private bool randomSpeed = false;
     
     private float xAxisPosition;
     private float yAxisPosition;
@@ -26,7 +28,7 @@ public class SharkBehaviour : MonoBehaviour
         yAxisPosition = position.y;
 
         // Set the initial target position to the starting x-axis position
-        targetPosition = new Vector3(position.x, yAxisPosition, Z_AXIS);
+        targetPosition = new Vector3(position.x, yAxisPosition, freezeZAxis == true ? Z_AXIS : position.z);
         rotation = transform.rotation.eulerAngles;
         yAxisRotation = rotation.y;
     }
@@ -36,8 +38,8 @@ public class SharkBehaviour : MonoBehaviour
         var currentPosition = transform.position;
 
         // Move towards the target position
-        transform.position = Vector3.MoveTowards(currentPosition, targetPosition, movementSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(rotation.x, yAxisRotation, rotation.z), 180f * movementSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(currentPosition, targetPosition, (randomSpeed == false ? movementSpeed: Random.Range(1, movementSpeed)) * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(rotation.x, yAxisRotation, rotation.z), 180f * (randomSpeed == false ? movementSpeed : Random.Range(1, movementSpeed)) * Time.deltaTime);
 
         // If the shark reaches the target position, update the new target position
         if (currentPosition == targetPosition)
@@ -48,16 +50,18 @@ public class SharkBehaviour : MonoBehaviour
 
     private void UpdateTargetPosition()
     {
+        var position = transform.position;
+
         // If the shark is moving right, update the target position towards the maximum x-axis position
         // Otherwise, update the target position towards the minimum x-axis position
         if (movingRight)
         {
-            targetPosition = new Vector3(xAxisPosition + radius, yAxisPosition, Z_AXIS);
+            targetPosition = new Vector3(xAxisPosition + radius, yAxisPosition, freezeZAxis == true ? Z_AXIS : position.z);
             yAxisRotation += 180;
         }
         else
         {
-            targetPosition = new Vector3(xAxisPosition + (-radius), yAxisPosition, Z_AXIS);
+            targetPosition = new Vector3(xAxisPosition + (-radius), yAxisPosition, freezeZAxis == true ? Z_AXIS : position.z);
             yAxisRotation -= 180;
         }
 
@@ -72,7 +76,7 @@ public class SharkBehaviour : MonoBehaviour
         IEnumerator CalmDown()
         {
             yield return new WaitForSeconds(3f);
-            movementSpeed = 3;
+            movementSpeed = (randomSpeed == false ? 3 : Random.Range(1, 3));
         }
 
         StartCoroutine(CalmDown());
