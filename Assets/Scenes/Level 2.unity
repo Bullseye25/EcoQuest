@@ -7108,34 +7108,10 @@ MonoBehaviour:
   target: {fileID: 402740841}
   onEnter:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 951215939}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   onExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 951215939}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!65 &924076821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7305,22 +7281,6 @@ MonoBehaviour:
   uponComplete:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &951215939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951215930}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061822be2dc97f44eac74ee6a30ec37b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 402740841}
-  speed: 3
-  rotateWhileMoving: 0
-  allowYRotation: 0
 --- !u!1001 &962759885
 PrefabInstance:
   m_ObjectHideFlags: 0
