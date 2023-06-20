@@ -49,6 +49,7 @@ public class NodesPath : MonoBehaviour
                         transform.LookAt(currentPoint.position);
                         var rotation = transform.rotation.eulerAngles;
                         transform.rotation = Quaternion.Euler(rotation.x, rotation.y + 90, rotation.z);
+ 
                     }
                 }
             }
