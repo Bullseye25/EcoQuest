@@ -6,9 +6,9 @@ using TMPro;
 
 public class PrefabSpawner : MonoBehaviour
 {
-    public GameObject prefab;
-    public Transform[] positions;
-    public TextMeshProUGUI trashCollectedText;
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private Transform[] positions;
+    [SerializeField] private TextMeshProUGUI trashCollectedText;
 
     private int trashCollected;
     private int currentIndex = 0;
