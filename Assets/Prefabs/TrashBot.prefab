@@ -112,9 +112,10 @@ GameObject:
   - component: {fileID: 2999619067962256953}
   - component: {fileID: 6020115963489879754}
   - component: {fileID: 4711001068374291129}
+  - component: {fileID: -9190009796376986410}
   m_Layer: 0
   m_Name: TrashBot
-  m_TagString: Untagged
+  m_TagString: Prefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +193,18 @@ MonoBehaviour:
   onExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-9190009796376986410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8570424701496001369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4ea818319cd4d4988eeaba8333734b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7177922183036136639
 PrefabInstance:
   m_ObjectHideFlags: 0
