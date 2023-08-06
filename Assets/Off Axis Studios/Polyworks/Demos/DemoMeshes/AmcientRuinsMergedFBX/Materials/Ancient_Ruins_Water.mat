@@ -52,7 +52,7 @@ Material:
     - _GlintSpeed: 0.01
     - _ReflectionPower: 0.4
     - _SunSpecularPower: 30
-    - _WaterDepth: 0.74
+    - _WaterDepth: 0.274
     - _Wave1Amps: 0.1
     - _Wave1Dir: 0.65
     - _Wave1Length: 1.5
@@ -64,11 +64,11 @@ Material:
     - _WaveNormalScale: 50
     - _WaveNormalSpeed: 0.02
     m_Colors:
-    - _DeepColor: {r: 0, g: 0.72, b: 0.71, a: 1}
-    - _DistanceColor: {r: 0.04, g: 0.24, b: 0.67, a: 1}
+    - _DeepColor: {r: 0, g: 0.72156864, b: 0.70980394, a: 1}
+    - _DistanceColor: {r: 0.039215688, g: 0.23921569, b: 0.67058825, a: 1}
     - _EdgeFoamColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
     - _GlintColor: {r: 0.47, g: 0.47, b: 0.47, a: 1}
-    - _ShallowColor: {r: 0.9103774, g: 0.9813572, b: 1, a: 1}
-    - _SpecColor: {r: 1, g: 0.35, b: 0.15, a: 1}
-    - _SubSurfColor: {r: 1, g: 0.6, b: 0.47, a: 1}
+    - _ShallowColor: {r: 0.9098039, g: 0.972549, b: 1.0039216, a: 1}
+    - _SpecColor: {r: 1, g: 0.34901962, b: 0.14901961, a: 1}
+    - _SubSurfColor: {r: 1, g: 0.6, b: 0.47058824, a: 1}
   m_BuildTextureStacks: []
